@@ -1,0 +1,28 @@
+.content {
+  width: 95%;
+  margin: 20px auto;
+  background-color: #0D063E;
+  color: #596E75;
+}
+
+.title {
+  color: #596E75;
+  text-align: center;
+}
+
+textarea {
+  width: 95%;
+  height: 700px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #86a5b0;
+}
+
+.markdown {
+  width: 95%;
+  height: 700px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #86a5b0;
+  background: white;
+}

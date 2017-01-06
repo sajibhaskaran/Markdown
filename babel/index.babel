@@ -1,0 +1,55 @@
+const defaultProps = "# Heading\n## Sub-heading\n### Another deeper heading\n\nParagraphs are separated by a blank line.\n\nLeave 2 spaces at the end of a line to do a line break\n\n Text attributes *italic*, **bold**, `monospace`, ~~strikethrough~~ .\n\n\nShopping list:\n* apples\n* oranges\n* pears\n\nNumbered list:\n\n1. apples\n2. oranges\n3. pears\n\n\nThe rain---not the reign---in Spain.\n\n";
+
+class Markdown extends React.Component {
+  constructor(props) {
+
+    super(props);
+    this.state = {
+      content: ''
+    }
+    this.changeToMarkup = this.changeToMarkup.bind(this);
+  }
+
+  componentWillMount() {
+
+    this.setState({
+      content: defaultProps
+    })
+  }
+
+  changeText(e) {
+    //console.log(e.target.value);
+    this.setState({
+      content: e.target.value
+    });
+  }
+
+  changeToMarkup(content) {
+
+    return {
+      __html: marked(content)
+    }
+  }
+
+  render() {
+    const {
+      content
+    } = this.state;
+
+    return (
+      <div className="row content">
+        <h1 className="title">Markdown Previewer</h1>
+        <div className="col-sm-6 col-xs-12">
+        <textarea value={this.state.content} onChange={this.changeText.bind(this)} rows="20"></textarea>
+        </div>
+        <div className="col-sm-6 col-xs-12">
+        <div className="markdown" dangerouslySetInnerHTML={this.changeToMarkup(content)}>
+        </div>
+        </div>
+        </div>
+    )
+  }
+
+}
+
+ReactDOM.render(<Markdown />, app)
